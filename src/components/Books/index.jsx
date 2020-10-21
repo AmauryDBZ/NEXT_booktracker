@@ -1,20 +1,7 @@
 import React, { useEffect, useState } from "react";
-import books from '../../data';
 import Book from '../Book';
 
-const Books = ({query}) => {
-  const [data, setData] = useState(books.books[0]);
-  console.log(query);
-
-  useEffect(() => {
-    let searchResult = [];
-    data.map(book => {
-      if (book.title.toLowerCase().includes(query.toLowerCase())) {
-        searchResult.push(book)
-      }
-    })
-    setData(searchResult);
-  }, []);
+const Books = ({data}) => {
 
   return (
     <div>

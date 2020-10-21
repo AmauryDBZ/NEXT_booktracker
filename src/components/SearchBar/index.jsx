@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import Books from '../Books';
+import books from '../../data';
 
 
 const SearchBar = () => {
   const [query, setQuery] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [data, setData] = useState(books.books[0]);
 
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
 
   const handleSubmit = (event) => {
-    console.log(`Your query is : ${query}`);
     event.preventDefault();
-    setSearchQuery(query);
+
+    let searchResult = [];
+    data.map(book => {
+      if (book.title.toLowerCase().includes(query.toLowerCase())) {
+        searchResult.push(book)
+      }
+    })
+    setData(searchResult);
   };
 
   return (
@@ -26,7 +33,7 @@ const SearchBar = () => {
           Search
         </button>
       </form>
-      <div className="row"><Books query={searchQuery}/></div>
+      <div className="row"><Books data={data} /></div>
     </div>
   )
 }
