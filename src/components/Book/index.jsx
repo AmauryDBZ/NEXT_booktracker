@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Book = ({title, isFav, read, pageCount, authors, categories, image, shortDescription}) => {
+const Book = ({
+  title,
+  id,
+  isFav,
+  read,
+  pageCount,
+  authors,
+  categories,
+  image,
+  shortDescription,
+  toggleFav,
+  toggleRead
+  }) => {
+
+
   return (
-    <div className="col-4">
+    <div className="col-3">
       <div className="card">
       <img src={image} className="card-img-top" alt={title} />
         <div className="card-body">
@@ -10,7 +24,8 @@ const Book = ({title, isFav, read, pageCount, authors, categories, image, shortD
           <h6>{authors}</h6>
           <p>{categories}</p>
           <em>{pageCount}</em>
-          <button href="#" className="btn btn-primary">Ajouter aux favoris</button>
+          <button href="#" className="btn btn-primary" onClick={() => toggleFav(id)}>Ajouter aux favoris</button>
+          <button href="#" className="btn btn-secondary" onClick={() => toggleRead(id)}>A lire</button>
         </div>
       </div>
     </div>

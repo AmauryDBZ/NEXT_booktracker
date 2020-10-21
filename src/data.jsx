@@ -1,4 +1,4 @@
-const books = {
+let books = {
   "books": [
     [{
       "isFav": false,
